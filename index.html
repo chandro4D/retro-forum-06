@@ -70,8 +70,8 @@
             <br>
   
             <label class="bg-[#FFFFFF] input flex items-center gap-2">
-              <input type="text" class="grow rounded-3xl " placeholder="Search here anything" />
-              <button class="bg-[#797DFC]   text-[#FFFFFF] rounded-[46px] h-8 w-16">Search</button>
+              <input id="search-field" type="text" class="grow rounded-3xl " placeholder="Search here anything" />
+              <button onclick="handleButton()" class="bg-[#797DFC]   text-[#FFFFFF] rounded-[46px] h-8 w-16">Search</button>
             </label>
 
           </div>
@@ -110,6 +110,9 @@
           <p class="text-lg font-normal text-[#12132D99]">
             Yes, you can run unit tests and view the results directly within the app. <br> The integrated testing features allow for a streamlined .
           </p>
+        </div>
+        <div id="loading-spener" class="text-center mt-16 mb-16 hidden">
+          <span class="loading loading-spinner loading-lg"></span>
         </div>
       </section>
 

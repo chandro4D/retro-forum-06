@@ -10,8 +10,9 @@
 
 //-------------------------------lets discuss section-------------------------------------------------------
 
-const loadData = async() =>{
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+const loadData = async(searchText) =>{
+    toggleLoading(true);
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
     const data = await res.json();
     //console.log(data);
     const allData = data.posts
@@ -21,6 +22,7 @@ const loadData = async() =>{
 const displayAll = allData => { 
 
     const letContainer =document.getElementById('let-container'); 
+    letContainer.textContent = '';
 
     allData.forEach(info => {
         console.log(info);
@@ -109,6 +111,8 @@ const displayAll = allData => {
         letContainer.appendChild(letCard);
 
     });
+    toggleLoading(false);
+
     //console.log(data); 
 }
 loadData();
@@ -152,3 +156,24 @@ const displayAllPost = allPost =>{
 
 }
 loadPost();
+//---------------------------button----------------------------------------
+const handleButton = () =>{
+    const searchField =document.getElementById('search-field');
+    searchText = searchField.value ;
+    //console.log(searchText);
+    loadData(searchText);
+}
+
+
+//-----------------------spener-----------------
+
+const toggleLoading = (isLoading) =>{
+    const loadingSpener = document.getElementById('loading-spener');
+    if(isLoading){
+        loadingSpener.classList.remove('hidden');
+    }
+    else{
+        loadingSpener.classList.add('hidden');
+    }
+    
+}

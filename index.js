@@ -1,6 +1,7 @@
-console.log('CHANDRO SHAKHOR MONDAL')
+//console.log('CHANDRO SHAKHOR MONDAL')
 //bg-[url('/images/bgbanner.png')]
 //let-container
+//w-[374px] h-[482px]
 
 
 //fetch('https://openapi.programming-hero.com/api/retro-forum/posts')
@@ -12,8 +13,9 @@ console.log('CHANDRO SHAKHOR MONDAL')
 const loadData = async() =>{
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
     const data = await res.json();
+    //console.log(data);
     const allData = data.posts
-    //console.log(allData);
+   
     displayAll(allData);
 }
 const displayAll = allData => { 
@@ -110,3 +112,43 @@ const displayAll = allData => {
     //console.log(data); 
 }
 loadData();
+
+//-------------------------post section-----------------------------------------------------------------------
+const loadPost = async() => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const post = await res.json();
+    const allPost = post
+    console.log(allPost);
+    displayAllPost(allPost);
+}
+const displayAllPost = allPost =>{
+    const postContainer = document.getElementById('post-container')
+    allPost.forEach(info1 => {
+
+        console.log(info1)
+        const postCard = document.createElement('div');
+        postCard.classList = `flex pt-[20px] w-[374px] h-[482px] card shadow-xl mb-[20px] ml-[32px] bg-[#FFFFFF]`
+        postCard.innerHTML = `<figure class="pt-8 pl-8 rounded-3xl w-[345px] h-[190px]"><img src="${info1.cover_image}" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title text-bade font-normal">29 January 2024</h2>
+          <p class="text-lg font-extrabold">${info1.title}</p>
+          <p class="base font-normal">${info1.description} </p>
+          <div class="flex">
+            <div class="mr-5 w-[44px] h-[44px] rounded-3xl ">
+              <h1><img src="${info1.profile_image}"  /></h1>
+            </div>
+            <br>
+            <div>
+              <h1 class="base font-bold">${info1.author.name}</h1>
+              <p class="sm font-normal">${info1.author.designation}</p>
+            </div>
+          </div>
+        </div>
+        
+        
+        ` ;
+        postContainer.appendChild(postCard);
+    })
+
+}
+loadPost();

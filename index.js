@@ -26,22 +26,22 @@ const displayAll = allData => {
         letCard.classList = `flex w-[772px] h-[270px] bg-[#797DFC] rounded-3xl mr-6 p-[40px] mb-[25px]`
         letCard.innerHTML = `
         <div class="w-[72px] h-[72px] mr-[24px] mt-2">
-              <h1><img src="images/joinforum.png" alt=""></h1>
+              <h1><img src="${ info.image}" alt=""></h1>
         </div>
   
          <div>
              <div class="flex text-sm font-medium">
              <div class=" mr-[20px] ">
-                  <h1># Music</h1>
+                  <h1> # ${info.category}</h1>
             </div>
              <div>
-                  <h1>Author : Awlad Hossain</h1>
+                  <h1>Author : ${info.author.name}</h1>
               </div>
           </div>
           <div>
-                <h1 class="text-xl font-bold">10 Kids Unaware of Their Halloween Costume</h1>
+                <h1 class="text-xl font-bold">${info.title}</h1>
                
-                <p class="text-base font-normal">It’s one thing to subject yourself to ha Halloween costume mishap because, <br> hey that’s your prerogative</p>
+                <p class="text-base font-normal">${info.description}</p>
           </div>
              <br>
           <div class="divider divider-neutral"></div>
@@ -58,7 +58,7 @@ const displayAll = allData => {
                     </svg>
               </div>
                <div>
-                    <h1>500</h1>
+                    <h1>${info.comment_count}</h1>
                </div>  
             </div>
              <div class="flex mr-8">
@@ -73,7 +73,7 @@ const displayAll = allData => {
                     
                  </div>
                  <div>
-                    <h1 class="mr-2">1600</h1>
+                    <h1 class="mr-2">${info.view_count}</h1>
                 </div>
             </div>
               <div class="flex mr-56">
@@ -88,7 +88,7 @@ const displayAll = allData => {
                   
                 </div>
                 <div>
-                  <h1>5 min</h1>
+                  <h1>${info.posted_time} min </h1>
               </div>
              </div>
              <div>

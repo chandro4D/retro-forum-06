@@ -9,6 +9,16 @@
 //.then(json => console.log(json))
 
 //-------------------------------lets discuss section-------------------------------------------------------
+const loadData1 = async(searchText) =>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+    const data = await res.json();
+    //console.log(data);
+    const allData = data.posts
+   
+    displayAll(allData);
+
+}
+loadData1();
 
 const loadData = async(searchText) =>{
     toggleLoading(true);
@@ -117,21 +127,32 @@ const displayAll = allData => {
 }
 loadData();
 
+
 //-------------------------post section-----------------------------------------------------------------------
 const loadPost = async() => {
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const post = await res.json();
     const allPost = post
-    console.log(allPost);
+    // console.log(allPost);
     displayAllPost(allPost);
 }
 const displayAllPost = allPost =>{
     const postContainer = document.getElementById('post-container')
     allPost.forEach(info1 => {
 
-        console.log(info1)
+        if(info1.author.designation === false){
+            info1.author.designation === 'unknown';
+        }
+        else{
+            info1.author.designation === info1.author.designation;
+        }
+
+
+        //console.log(info1)
         const postCard = document.createElement('div');
         postCard.classList = `flex pt-[20px] w-[374px] h-[482px] card shadow-xl mb-[20px] ml-[32px] bg-[#FFFFFF]`
+        
+                
         postCard.innerHTML = `<figure class="pt-8 pl-8 rounded-3xl w-[345px] h-[190px]"><img src="${info1.cover_image}" alt="Shoes" /></figure>
         <div class="card-body">
           <h2 class="card-title text-bade font-normal">29 January 2024</h2>

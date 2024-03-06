@@ -9,7 +9,7 @@
 //.then(json => console.log(json))
 
 //-------------------------------lets discuss section-------------------------------------------------------
-const loadData1 = async(searchText) =>{
+const loadData1 = async() =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
     const data = await res.json();
     //console.log(data);
@@ -19,6 +19,9 @@ const loadData1 = async(searchText) =>{
 
 }
 loadData1();
+
+
+
 
 const loadData = async(searchText) =>{
     toggleLoading(true);
@@ -38,6 +41,8 @@ const displayAll = allData => {
         console.log(info);
         const letCard = document.createElement('div');
         letCard.classList = `flex w-[772px] h-[270px] bg-[#797DFC] rounded-3xl mr-6 p-[40px] mb-[25px]`
+
+        
         letCard.innerHTML = `
         <div class="w-[72px] h-[72px] mr-[24px] mt-2">
               <h1><img src="${ info.image}" alt=""></h1>
@@ -53,7 +58,7 @@ const displayAll = allData => {
               </div>
           </div>
           <div>
-                <h1 class="text-xl font-bold">${info.title}</h1>
+                <h1 id="firstTitle" class="text-xl font-bold">${info.title}</h1>
                
                 <p class="text-base font-normal">${info.description}</p>
           </div>
@@ -106,7 +111,7 @@ const displayAll = allData => {
               </div>
              </div>
              <div>
-                  <button class=" add-btn" > <svg width="27.999817" height="28.000000" viewBox="0 0 27.9998 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <button onclick="handleButton2()" class="add-btn" > <svg width="27.999817" height="28.000000" viewBox="0 0 27.9998 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   
                   <defs/>
                   <path id="Vector" d="M13.9997 0C6.26794 0 0 6.26819 0 13.9999C0 21.7314 6.26794 28 13.9997 28C21.7314 28 27.9998 21.7314 27.9998 13.9999C27.9998 6.26819 21.7314 0 13.9997 0ZM13.9999 4.91736L22.2846 10.0835L5.71533 10.0835L13.9999 4.91736ZM22.3878 18.333L22.387 18.333C22.387 19.1616 21.7154 19.833 20.8869 19.833L7.11301 19.833C6.28439 19.833 5.61295 19.1615 5.61295 18.333L5.61295 10.4122C5.61295 10.3246 5.62189 10.2394 5.63644 10.1556L13.5519 15.0914C13.5616 15.0974 13.572 15.1016 13.582 15.1072C13.5925 15.1129 13.6031 15.1185 13.6137 15.1239C13.6696 15.1527 13.7272 15.176 13.7861 15.1912C13.7922 15.1929 13.7982 15.1936 13.8043 15.1949C13.8689 15.2102 13.9343 15.2197 13.9997 15.2197L14.0002 15.2197C14.0006 15.2197 14.0011 15.2197 14.0011 15.2197C14.0664 15.2197 14.1318 15.2104 14.1964 15.1949C14.2025 15.1935 14.2086 15.1929 14.2146 15.1912C14.2734 15.176 14.3308 15.1527 14.387 15.1239C14.3976 15.1185 14.4083 15.1129 14.4187 15.1072C14.4286 15.1016 14.4391 15.0974 14.4488 15.0914L22.3643 10.1556C22.3788 10.2394 22.3878 10.3243 22.3878 10.4122L22.3878 18.333Z" fill="#10B981" fill-opacity="1.000000" fill-rule="nonzero"/>
@@ -199,11 +204,12 @@ const toggleLoading = (isLoading) =>{
     
 }
 //--------------------------button----------------------------
-const allBtn = document.getElementsByClassName("add-btn");
+/* const allBtn = document.getElementsByClassName("add-btn");
 console.log(allBtn)
 
 let Seat = 0;
 for(const btn of allBtn){
+    console.log(btn)
     btn.addEventListener("click",function(e){
         Seat = Seat+1;
         const firstName = e.target.innerText;
@@ -222,4 +228,24 @@ for(const btn of allBtn){
         shiftA.appendChild(ul);
         document.getElementById("seat").innerText=Seat;
     })
+} 
+*/
+
+//--------------------------------//-----------------------------------//
+const handleButton2 = () =>{
+
+    const shift = document.getElementById("shiftA")
+    const ul1 =document.createElement("ul");
+    ul1.innerText = "10 Kids Unaware  of \n Their Costume";
+    shift.appendChild(ul1);
+    const shift1 = document.getElementById("shiftB")
+    const ul2 =document.createElement("ul");
+    ul2.innerText = "1,568";
+    shift1.appendChild(ul2);
+    
+
 }
+
+
+   // const firstChandro = 
+   // console.log(firstChandro);
